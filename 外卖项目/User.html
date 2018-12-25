@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/User.css">
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
+	<script src="jq/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var zj = 0;
+			$(".join1-btn").click(function(e){
+				
+				var name = $(this).prev().prev().prev().text();
+				var price = $(this).prev().text();
+				var names = $(".left-car");
+				var tprice = parseInt(price.slice(1, price.length));
+				zj+=tprice;
+				$(".zj").text("￥"+zj);
+
+				for(var i = 0 ; i < names.length;i++){
+					if (name == $(names[i]).text()) {
+						var count = $(names[i]).next().text();
+						$(names[i]).next().text(++count);
+
+						var cprice = count*tprice;
+						price=cprice;
+						zj+price;
+						$(".zj").text("￥"+zj);
+
+						if(zj >= 35){
+							$("#Settlement-btn").removeClass("disabled").attr("disabled", null).css("background-color","lightgreen").text('去结算 >').css("cursor","pointer");
+						}
+						else{
+							$("#priceleft").text(35 - zj);
+						}
+
+						var sprice = $(names[i]).next().next().text();
+						$(names[i]).next().next().text("￥"+price);
+
+						return;
+					}
+				}
+				
+				var shopping = "<li class='list-group-item'><span class='left-car'>"+name+"</span><span class='mid-car'>1</span><span class='right-car'>"+price+"</span></li>";
+				$(".shoppingcar").append(shopping);
+
+				if(zj >= 35){
+					$("#Settlement-btn").removeClass("disabled").attr("disabled", null).css("background-color","lightgreen").text('去结算 >').css("cursor","pointer");
+				}
+				else{
+					$("#priceleft").text(35 - zj);
+				}
+
+			});
+			// $("#empty").click(function(shopping){				
+			// 	$(".shoppingcar").empty(shopping);
+			// 	$(".zj").text("￥0");
+			// 	zj = 0;
+			// });
+		});
+	</script>
+</head>
+<body>
+	<div class="divdaddy">
+		<div class="div1">
+			<div class="top-div">
+				<p>厚浦外卖-好吃便宜的外卖</p>
+				<form>
+					<button type="button" id="quit">admin(退出)</button>
+					<button type="button" id="add">添加菜谱</button>
+					<button type="button" id="examine">查看订单</button>
+				</form>
+			</div>
+			<p class="p1">全是美味!</p>
+			<div class="car">
+				<ul class="list-group">
+					<li class="list-group-item ">购物车<a id="empty" href="javascript:void(0)" onclick="location.reload()">[清空]</a></li>
+				</ul>
+				<ul class="list-group shoppingcar">
+					
+				</ul>
+				<div class="Settlement-div">
+					<span class="zj">￥0</span>
+					<span class="psf">配送费￥5</span>
+					<button type="button" id="Settlement-btn" disabled="disabled">还差<font id="priceleft">35</font>元起送</button>
+				</div>
+			</div>
+			<div class="bottom-div">
+				<p class="top-p">厚浦食堂是全中国最好吃的米饭</p>
+				<p class="bottom-p">厚浦食堂是全中国最好吃的米饭厚浦食堂是全中国最好吃的米饭厚浦食堂是全中国最好吃的米饭厚浦食堂是全中国最好吃的米饭厚浦食堂是全中国最好吃的米饭厚浦食堂是全中国最好吃的米饭厚浦食堂是全中国最好吃的米饭厚浦食堂是全中国最好吃的米饭厚浦食堂是全中国最好吃的米饭厚浦食堂是全中国最好吃的米饭厚浦食堂是全中国最好吃的米饭厚浦食堂是全中国最好吃的米饭厚浦食堂是全中国最好吃的米饭厚浦食堂是全中国最好吃的米饭厚浦食堂是全中国最好吃的米饭厚浦食堂是全中国最好吃的米饭厚浦食堂是全中国最好吃的米饭厚浦食堂是全中国最好吃的米饭厚浦食堂是全中国最好吃的米饭</p>
+			</div>
+		</div>
+		<div class="div2">
+				<p class="p2">热销美食榜</p>
+
+				<ul>
+					<li>
+						<div class="cdiv1">
+							<div class="cdiv1-top">
+							</div>
+							<div class="cdiv1-bottom">
+								<p class="p3">黑椒牛排</p>
+								<p>好吃到爆炸好吃到爆炸好吃到爆炸好吃到爆炸好吃到爆炸</p>
+								<p class="p4">￥19</p>
+								<button type="button" class="join1-btn">加入购物车</button>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="cdiv1">
+							<div class="cdiv1-top">
+
+							</div>
+							<div class="cdiv1-bottom">
+								<p class="p3">芝士蒜蓉面包</p>
+								<p>好吃到爆炸好吃到爆炸好吃到爆炸好吃到爆炸好吃到爆炸</p>
+								<p class="p4">￥20</p>
+								<button type="button" class="join1-btn">加入购物车</button>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="cdiv1">
+							<div class="cdiv1-top">
+
+							</div>
+							<div class="cdiv1-bottom">
+								<p class="p3">烤鱼肌肉沙拉</p>
+								<p>好吃到爆炸好吃到爆炸好吃到爆炸好吃到爆炸好吃到爆炸</p>
+								<p class="p4">￥8</p>
+								<button type="button" class="join1-btn">加入购物车</button>
+							</div>
+						</div>
+					</li>
+				</ul>
+				<ul>
+					<li>
+						<div class="cdiv1">
+							<div class="cdiv1-top">
+
+							</div>
+							<div class="cdiv1-bottom">
+								<p class="p3">有机鸡蛋</p>
+								<p>好吃到爆炸好吃到爆炸好吃到爆炸好吃到爆炸好吃到爆炸</p>
+								<p class="p4">￥2</p>
+								<button type="button" class="join1-btn">加入购物车</button>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="cdiv1">
+							<div class="cdiv1-top">
+
+							</div>
+							<div class="cdiv1-bottom">
+								<p class="p3">土豆鸡</p>
+								<p>好吃到爆炸好吃到爆炸好吃到爆炸好吃到爆炸好吃到爆炸</p>
+								<p class="p4">￥10</p>
+								<button type="button" class="join1-btn">加入购物车</button>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="cdiv1">
+							<div class="cdiv1-top">
+
+							</div>
+							<div class="cdiv1-bottom">
+								<p class="p3">脆皮鸡肉沙拉</p>
+								<p>好吃到爆炸好吃到爆炸好吃到爆炸好吃到爆炸好吃到爆炸</p>
+								<p class="p4">￥15</p>
+								<button type="button" class="join1-btn">加入购物车</button>
+							</div>
+						</div>
+					</li>
+				</ul>
+		</div>
+	</div>
+</body>
+</html>
